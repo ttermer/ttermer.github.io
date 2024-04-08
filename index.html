@@ -52,7 +52,7 @@
 <body>
 
 <div class="container">
-  <h1>Obtener colecciones BY: TERMER</h1>
+  <h1>Obtener colecciones/items mg</h1>
   <p>Ingresa el contenido del SWF:</p>
   <textarea id="texto"></textarea>
   <button onclick="guardarContenido()">Guardar</button>
@@ -99,7 +99,7 @@ function crearEncode() {
   }
 
   salida.value = btoa(outputLines.join(''));
-  document.getElementById('info').innerText = "Encode preparado, copia y pega en BASE64";
+  document.getElementById('info').innerText = "Encode preparado";
 }
 
 function copiarContenido() {
