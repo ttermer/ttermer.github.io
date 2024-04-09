@@ -85,16 +85,18 @@ function crearEncode() {
   var salida = document.getElementById('salida');
   
   var items = contenido.split('\n');
-  var itemsFiltrados = items.filter(function(nombre) {
+  var itemsFiltrados = items.filter(function(item) {
     var regex = /^(?!.*(?:_on|_so|_fla|\.swf|header|formas|sprites|textos|sonidos|fuentes|marcos|scenes|otros|scripts|<default package>|Asset|morphshapes)$).*$/i;
-    return regex.test(items);
+    return regex.test(item);
   });
 
   var outputLines = [];
-  for (var i = 0; i < items.length; i++) {
-    var linea = "user.state get\n";
-    linea += "inventory.add " + cantidad + " " + prefijo + "." + itemsFiltrados[i] + "\n";
-    linea += "after 1 A" + (i + 1) + "\n\n";
+  outputLines.push("initial: DO\n    on activate A0\n\n");
+  for (var i = 0; i < itemsFiltrados.length; i++) { 
+    var linea = "A" + i + ": DO\n";
+    linea += "    user.state get\n";
+    linea += "    inventory.add " + cantidad + " " + prefijo + "." + itemsFiltrados[i] + "\n";
+    linea += "    after 1 A" + (i + 1) + "\n\n";
     outputLines.push(linea);
   }
 
