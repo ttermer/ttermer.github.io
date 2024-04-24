@@ -24,7 +24,7 @@ function displayImages() {
                 // Crea un checkbox para cada imagen
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
-                checkbox.value = file.replace('.png', '');
+                checkbox.value = file.replace('.png', '').replace('_', '/');
                 checkbox.addEventListener('change', handleCheckboxChange);
                 imageDiv.appendChild(checkbox);
 
